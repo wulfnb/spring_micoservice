@@ -1,0 +1,45 @@
+# Java build files
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven / Gradle build directories
+/target/
+/build/
+/out/
+
+# IDE specific
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Environment and configuration
+.env
+application-*.yml
+application-*.properties
+
+# Test reports
+/test-output/
