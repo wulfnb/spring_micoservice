@@ -63,3 +63,31 @@ mvn test -Dtest=*Test
 
 # Run only integration tests  
 mvn test -Dtest=*IntegrationTest
+
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment.
+
+### Workflow Features:
+
+- **Automated Testing**: Runs on every push and pull request
+- **Code Coverage**: Enforces 80% coverage minimum
+- **Docker Builds**: Automatically builds and pushes Docker images to GitHub Container Registry
+- **Quality Gates**: Build fails if tests fail or coverage targets aren't met
+
+### Pipeline Steps:
+
+1. **Checkout**: Fetches the latest code
+2. **JDK Setup**: Configures Java 21 environment
+3. **Build**: Compiles the application with Maven
+4. **Test**: Runs all unit and integration tests
+5. **Coverage**: Generates and verifies code coverage reports
+6. **Docker Build** (main branch only): Builds and pushes Docker image to GHCR
+
+### Docker Image
+
+The application is containerized and available at:
+
+```bash
+ghcr.io/your-username/course-progress-service:latest
