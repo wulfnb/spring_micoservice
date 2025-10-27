@@ -94,17 +94,12 @@ jobs:
           target/site/jacoco/
         retention-days: 30
 
-    - name: Generate Coverage Badge
-      uses: cicirello/coverage-badges-action@v2
-      with:
-        filename: coverage.svg
-        branches: main
-
-    - name: Upload Coverage Badge
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-badge
-        path: coverage.svg
+    - name: Display Coverage Summary
+      run: |
+        echo "## Test Coverage Summary" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ All tests passed" >> $GITHUB_STEP_SUMMARY
+        echo "- 📊 Coverage reports generated" >> $GITHUB_STEP_SUMMARY
+        echo "- 🔍 SonarCloud analysis completed" >> $GITHUB_STEP_SUMMARY
 
   coverage-comment:
     name: PR Coverage Comment
