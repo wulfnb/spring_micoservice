@@ -21,7 +21,6 @@
         <jacoco.version>0.8.11</jacoco.version>
         <!-- SonarCloud Properties -->
         <sonar.organization>wulfnb</sonar.organization>
-        <sonar.projectKey>wulfnb_spring_micoservice</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
