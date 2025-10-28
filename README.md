@@ -8,6 +8,7 @@ A Spring Boot microservice for tracking and analyzing course progress events in 
 - Analyze course success rates
 - RESTful API with proper validation
 - In-memory H2 database for development
+- **Data Model**: CourseProgressEvent (eventId, userId, courseId, timestamp, eventType)
 
 ## API Endpoints
 
@@ -63,7 +64,7 @@ mvn test -Dtest=*Test
 
 # Run only integration tests  
 mvn test -Dtest=*IntegrationTest
-
+```
 
 ## CI/CD Pipeline
 
@@ -90,4 +91,68 @@ This project uses GitHub Actions for continuous integration and deployment.
 The application is containerized and available at:
 
 ```bash
-ghcr.io/your-username/course-progress-service:latest
+ghcr.io/wulfnb/spring_micoservice/course-progress-service:latest
+```
+
+To run the application
+```bash
+docker run -p 8080:8080 ghcr.io/wulfnb/spring_micoservice/course-progress-service:latest
+```
+
+# Run for check its working
+curl http://localhost:8080/v1/test
+
+# Post data
+
+curl -X POST http://localhost:8080/v1/events \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user123",
+    "courseId": "course456",
+    "timestamp": "2024-01-15T10:30:00",
+    "eventType": "COURSE_STARTED"
+  }'
+
+
+# Get user events
+
+curl http://localhost:8080/v1/events/user/user123
+
+# course analysis
+
+curl http://localhost:8080/v1/analysis/course/course456
+
+## Quality Gates
+
+### Code Quality Tools
+
+- **Checkstyle**: Enforces coding standards
+- **PMD**: Static code analysis for potential bugs
+- **SpotBugs**: Bytecode analysis for bug patterns
+- **JaCoCo**: Code coverage enforcement (80% minimum)
+- **SonarCloud**: Cloud-based code quality and security analysis
+- **Trivy**: Vulnerability scanning for containers
+
+### Quality Requirements
+
+- ✅ All tests must pass
+- ✅ 80% minimum code coverage
+- ✅ No critical code smells (SonarCloud)
+- ✅ No security vulnerabilities
+- ✅ Coding standards compliance
+
+### PR Requirements
+
+Every pull request will automatically:
+
+1. Run code quality checks
+2. Execute all tests with coverage
+3. Scan for security vulnerabilities
+4. Post coverage report as PR comment
+5. Require all checks to pass before merge
+
+### SonarCloud Integration
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
