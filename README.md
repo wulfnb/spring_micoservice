@@ -156,3 +156,35 @@ Every pull request will automatically:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
+
+
+# Use of AI Tools
+
+This project was developed with assistance from multiple AI tools to accelerate development and ensure code quality.
+## AI Tools Used:
+
+- **DeepSeek:** Primary code generation for Spring Boot structure, API endpoints, and business logic
+
+- **Gemini 2.5 Pro:** Test case generation, CI/CD pipeline configuration, and troubleshooting
+
+- **GitHub Copilot:** Real-time code suggestions and auto-completion during development
+
+## Key Areas of AI Assistance:
+
+- **Boilerplate Code:** Generated initial Spring Boot microservice structure with entities, controllers, and services
+
+- **Test Cases:** Created comprehensive unit and integration tests with 80%+ coverage
+
+- **CI/CD Pipeline:** Set up GitHub Actions with quality gates, code analysis, and Docker builds
+
+- **Troubleshooting:** Resolved configuration issues with PMD, JaCoCo, and SonarCloud
+
+## Most Helpful Prompt:
+
+    "Create a GitHub Actions workflow for a Java Maven project that runs on PRs and main branch, includes Maven build, JaCoCo code coverage with 80% minimum, PMD, Checkstyle, SpotBugs, SonarCloud integration, Docker image building, and security scanning with Trivy. Also generate the corresponding Maven pom.xml configurations for all these tools."
+
+## Efficiency vs Expertise:
+
+- **AI Efficiency:** Rapid prototyping, test generation, and complex configuration setup
+
+- **Manual Expertise:** Business logic validation, architecture decisions, and code review
