@@ -164,9 +164,9 @@ Every pull request will automatically:
 
 ### SonarCloud Integration
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_microservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_microservice)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_microservice&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_microservice)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_microservice&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_microservice)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
 
 
 # Use of AI Tools
