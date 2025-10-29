@@ -16,6 +16,45 @@ A Spring Boot microservice for tracking and analyzing course progress events in 
 - `GET /v1/events/user/{userId}` - Get all events for a user
 - `GET /v1/analysis/course/{courseId}` - Get course analysis with success rates
 
+## Run Locally
+
+To run the application
+```bash
+docker run -p 8080:8080 ghcr.io/wulfnb/spring_microservice/course-progress-service:latest
+```
+
+### Verify the Service
+```bash
+curl http://localhost:8080/v1/test
+```
+
+## Example Requests
+
+### Create Event
+
+```bash
+curl -X POST http://localhost:8080/v1/events \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user123",
+    "courseId": "course456",
+    "timestamp": "2024-01-15T10:30:00",
+    "eventType": "COURSE_STARTED"
+  }'
+```
+
+### Get User Events
+
+```bash
+curl http://localhost:8080/v1/events/user/user123
+```
+
+### Course Analysis
+
+```bash
+curl http://localhost:8080/v1/analysis/course/course456
+```
+
 ## Test Strategy
 
 ### Overview
@@ -91,36 +130,8 @@ This project uses GitHub Actions for continuous integration and deployment.
 The application is containerized and available at:
 
 ```bash
-ghcr.io/wulfnb/spring_micoservice/course-progress-service:latest
+ghcr.io/wulfnb/spring_microservice/course-progress-service:latest
 ```
-
-To run the application
-```bash
-docker run -p 8080:8080 ghcr.io/wulfnb/spring_micoservice/course-progress-service:latest
-```
-
-# Run for check its working
-curl http://localhost:8080/v1/test
-
-# Post data
-
-curl -X POST http://localhost:8080/v1/events \
-  -H "Content-Type: application/json" \
-  -d '{
-    "userId": "user123",
-    "courseId": "course456",
-    "timestamp": "2024-01-15T10:30:00",
-    "eventType": "COURSE_STARTED"
-  }'
-
-
-# Get user events
-
-curl http://localhost:8080/v1/events/user/user123
-
-# course analysis
-
-curl http://localhost:8080/v1/analysis/course/course456
 
 ## Quality Gates
 
@@ -153,9 +164,9 @@ Every pull request will automatically:
 
 ### SonarCloud Integration
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_micoservice&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_micoservice)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_microservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_microservice)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_microservice&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_microservice)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wulfnb_spring_microservice&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=wulfnb_spring_microservice)
 
 
 # Use of AI Tools
