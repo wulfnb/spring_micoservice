@@ -153,6 +153,7 @@
             </plugin>
 
             <!-- Checkstyle for code style enforcement -->
+            <!-- Checkstyle for code style enforcement -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -162,9 +163,11 @@
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <failOnViolation>true</failOnViolation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -173,16 +176,18 @@
             </plugin>
 
             <!-- PMD for static code analysis -->
+            <!-- PMD for static code analysis -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.21.2</version>
+                <version>3.22.0</version> <!-- Updated for Java 21 support -->
                 <configuration>
                     <rulesets>
                         <ruleset>/rulesets/java/quickstart.xml</ruleset>
                     </rulesets>
                     <failOnViolation>true</failOnViolation>
                     <printFailingErrors>true</printFailingErrors>
+                    <targetJdk>21</targetJdk> <!-- Explicitly set Java version -->
                 </configuration>
                 <executions>
                     <execution>
