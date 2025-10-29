@@ -4,12 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public final class CourseProgressApplication {
-    
-    // Private constructor to prevent instantiation
-    private CourseProgressApplication() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
-    }
+@SuppressWarnings("PMD.UseUtilityClass")
+public class CourseProgressApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CourseProgressApplication.class, args);
