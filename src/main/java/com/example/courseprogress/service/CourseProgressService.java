@@ -23,7 +23,7 @@ public class CourseProgressService {
         event.setCourseId(request.getCourseId());
         event.setTimestamp(request.getTimestamp());
         event.setEventType(request.getEventType());
-        
+
         return eventRepository.save(event);
     }
 
@@ -32,32 +32,38 @@ public class CourseProgressService {
     }
 
     public CourseAnalysisResponse analyzeCourse(String courseId) {
-        // Get unique users who started the course
-        Set<String> startedUsers = eventRepository.findUniqueUsersByCourseIdAndEventType(
-            courseId, EventType.COURSE_STARTED);
-        
-        // Get unique users who passed the course
-        Set<String> passedUsers = eventRepository.findUniqueUsersByCourseIdAndEventType(
-            courseId, EventType.COURSE_PASSED);
-        
-        // Get unique users who failed the course
-        Set<String> failedUsers = eventRepository.findUniqueUsersByCourseIdAndEventType(
-            courseId, EventType.COURSE_FAILED);
+        Set<String> startedUsers = getUsersByEventType(courseId, EventType.COURSE_STARTED);
+        Set<String> passedUsers = getUsersByEventType(courseId, EventType.COURSE_PASSED);
+        Set<String> failedUsers = getUsersByEventType(courseId, EventType.COURSE_FAILED);
 
-        // Calculate pass rate (handle division by zero)
-        double passRate = 0.0;
+        double passRate = calculatePassRate(passedUsers, failedUsers);
+
+        return createAnalysisResponse(courseId, startedUsers, passedUsers, failedUsers, passRate);
+    }
+
+    private Set<String> getUsersByEventType(String courseId, EventType eventType) {
+        return eventRepository.findUniqueUsersByCourseIdAndEventType(courseId, eventType);
+    }
+
+    private double calculatePassRate(Set<String> passedUsers, Set<String> failedUsers) {
         long totalCompleted = passedUsers.size() + failedUsers.size();
-        if (totalCompleted > 0) {
-            passRate = (double) passedUsers.size() / totalCompleted * 100;
-            passRate = Math.round(passRate * 100.0) / 100.0; // Round to 2 decimal places
+        if (totalCompleted == 0) {
+            return 0.0;
         }
+        double percentage = (double) passedUsers.size() / totalCompleted * 100;
+        return Math.round(percentage * 100.0) / 100.0;
+    }
 
+    private CourseAnalysisResponse createAnalysisResponse(String courseId,
+            Set<String> startedUsers,
+            Set<String> passedUsers,
+            Set<String> failedUsers,
+            double passRate) {
         return new CourseAnalysisResponse(
-            courseId,
-            startedUsers.size(),
-            passedUsers.size(),
-            failedUsers.size(),
-            passRate
-        );
+                courseId,
+                startedUsers.size(),
+                passedUsers.size(),
+                failedUsers.size(),
+                passRate);
     }
 }

@@ -15,7 +15,8 @@ public interface CourseProgressEventRepository extends JpaRepository<CourseProgr
 
     List<CourseProgressEvent> findByUserIdOrderByTimestampAsc(String userId);
 
-    @Query("SELECT DISTINCT e.userId FROM CourseProgressEvent e WHERE e.courseId = :courseId AND e.eventType = :eventType")
+    @Query("SELECT DISTINCT e.userId FROM CourseProgressEvent e " +
+       "WHERE e.courseId = :courseId AND e.eventType = :eventType")
     Set<String> findUniqueUsersByCourseIdAndEventType(@Param("courseId") String courseId, 
                                                      @Param("eventType") EventType eventType);
 
