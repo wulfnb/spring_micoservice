@@ -153,7 +153,6 @@
             </plugin>
 
             <!-- Checkstyle for code style enforcement -->
-            <!-- Checkstyle for code style enforcement -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -163,11 +162,14 @@
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <failOnViolation>true</failOnViolation>
+                    <violationSeverity>warning</violationSeverity>  <!-- This treats warnings as
+                    violations -->
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>verify</phase>
+                        <id>checkstyle</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -175,7 +177,6 @@
                 </executions>
             </plugin>
 
-            <!-- PMD for static code analysis -->
             <!-- PMD for static code analysis -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
