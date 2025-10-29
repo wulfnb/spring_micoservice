@@ -7,8 +7,6 @@ public class CourseAnalysisResponse {
     private long participantsFailed;
     private double passRate;
 
-    public CourseAnalysisResponse() {}
-
     public CourseAnalysisResponse(String courseId, long participantsStarted, 
                                  long participantsPassed, long participantsFailed, 
                                  double passRate) {

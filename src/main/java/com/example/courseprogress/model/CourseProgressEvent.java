@@ -37,7 +37,6 @@ public class CourseProgressEvent {
     @Column(nullable = false)
     private EventType eventType;
 
-    public CourseProgressEvent() {}
 
     public CourseProgressEvent(String userId, String courseId, LocalDateTime timestamp, EventType eventType) {
         this.userId = userId;
