@@ -7,6 +7,10 @@ public class CourseAnalysisResponse {
     private long participantsFailed;
     private double passRate;
 
+    public CourseAnalysisResponse() {
+        // Intentionally empty for Jackson
+    }
+
     public CourseAnalysisResponse(String courseId, long participantsStarted, 
                                  long participantsPassed, long participantsFailed, 
                                  double passRate) {

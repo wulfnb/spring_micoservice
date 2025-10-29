@@ -37,6 +37,9 @@ public class CourseProgressEvent {
     @Column(nullable = false)
     private EventType eventType;
 
+    public CourseProgressEvent() {
+        // Intentionally empty for JPA
+    }
 
     public CourseProgressEvent(String userId, String courseId, LocalDateTime timestamp, EventType eventType) {
         this.userId = userId;

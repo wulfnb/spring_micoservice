@@ -1,5 +1,6 @@
 package com.example.courseprogress.controller;
 
+
 import com.example.courseprogress.model.EventType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
