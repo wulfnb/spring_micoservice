@@ -17,6 +17,11 @@ public class CourseProgressService {
     @Autowired
     private CourseProgressEventRepository eventRepository;
 
+    public void potentialBug() {
+        String str = null;
+        System.out.println(str.length()); // Null pointer dereference
+    }
+
     public CourseProgressEvent saveEvent(CourseProgressEventRequest request) {
         CourseProgressEvent event = new CourseProgressEvent();
         event.setUserId(request.getUserId());
